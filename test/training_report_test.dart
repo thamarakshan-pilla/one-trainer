@@ -1,12 +1,12 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:repset/data/memory_body_weight_repository.dart';
-import 'package:repset/data/memory_training_analytics_repository.dart';
-import 'package:repset/data/memory_workout_repository.dart';
-import 'package:repset/domain/body_weight.dart';
-import 'package:repset/domain/training_report.dart';
-import 'package:repset/domain/workout_session.dart';
+import 'package:trainerone/data/memory_body_weight_repository.dart';
+import 'package:trainerone/data/memory_training_analytics_repository.dart';
+import 'package:trainerone/data/memory_workout_repository.dart';
+import 'package:trainerone/domain/body_weight.dart';
+import 'package:trainerone/domain/training_report.dart';
+import 'package:trainerone/domain/workout_session.dart';
 
 void main() {
   test('builds a portable report without account data or notes', () async {
@@ -60,6 +60,6 @@ void main() {
       8,
     );
     expect(report.json, isNot(contains('Private')));
-    expect(report.markdown, contains('RepSet training report'));
+    expect(report.markdown, contains('TrainerOne training report'));
   });
 }

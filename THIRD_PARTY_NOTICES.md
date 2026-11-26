@@ -2,15 +2,14 @@
 
 ## Gym Visual exercise GIFs
 
-The exercise animation GIFs delivered by RepSet are copyrighted media from
-Gym Visual (Aliaksandr Makatserchyk), redistributed by RepSet with permission.
-They are not open-source, are not licensed under RepSet's source-code license,
-and are not included in this repository. See [MEDIA_NOTICE.md](MEDIA_NOTICE.md)
-for the usage boundary that applies to forks and derivatives.
+The exercise animation GIFs used by upstream RepSet are copyrighted media from
+Gym Visual (Aliaksandr Makatserchyk). RepSet redistributes them with permission.
+They are not open-source, are not licensed under the Apache-2.0 source license,
+and are not included in TrainerOne. See [MEDIA_NOTICE.md](MEDIA_NOTICE.md).
 
 ## CSS Animations by yui540
 
-RepSet's developer Animation Lab contains original Flutter implementations
+The developer Animation Lab contains original Flutter implementations
 inspired by interaction studies from:
 
 https://github.com/yui540/css-animations

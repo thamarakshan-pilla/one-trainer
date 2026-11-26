@@ -52,7 +52,7 @@ class _AnimationLabPageState extends State<AnimationLabPage> {
               ),
               const SizedBox(height: 12),
               Text(
-                'Native Flutter studies adapted for RepSet. Tap any card to replay it.',
+                'Native Flutter studies for TrainerOne. Tap any card to replay it.',
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   color: Theme.of(context).colorScheme.onSurfaceVariant,
                   height: 1.4,

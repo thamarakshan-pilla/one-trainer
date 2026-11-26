@@ -2,10 +2,10 @@ import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:path/path.dart' as path;
-import 'package:repset/core/database/app_database.dart';
-import 'package:repset/data/memory_body_weight_repository.dart';
-import 'package:repset/data/sqlite_body_weight_repository.dart';
-import 'package:repset/domain/body_weight.dart';
+import 'package:trainerone/core/database/app_database.dart';
+import 'package:trainerone/data/memory_body_weight_repository.dart';
+import 'package:trainerone/data/sqlite_body_weight_repository.dart';
+import 'package:trainerone/domain/body_weight.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 void main() {

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:repset/domain/workout_session.dart';
-import 'package:repset/domain/workout_summary.dart';
-import 'package:repset/features/workout/summary/workout_summary_sheet.dart';
+import 'package:trainerone/domain/workout_session.dart';
+import 'package:trainerone/domain/workout_summary.dart';
+import 'package:trainerone/features/home/home_tiles.dart';
+import 'package:trainerone/features/workout/summary/workout_summary_sheet.dart';
 
 WorkoutSummary _summary({
   List<WorkoutRecord> records = const [],
@@ -86,12 +87,8 @@ void main() {
 
     expect(find.byKey(const Key('workout-summary-sheet')), findsOneWidget);
     expect(find.text('Push day'), findsOneWidget);
-    // The brand mark identifies the modal as RepSet's own moment.
-    expect(
-      find.image(const AssetImage('assets/icon/brand_mark.png')),
-      findsOneWidget,
-    );
-    expect(find.text('REPSET / SESSION RECEIPT'), findsOneWidget);
+    expect(find.byType(TrainerOneMark), findsOneWidget);
+    expect(find.text('TRAINERONE / SESSION RECEIPT'), findsOneWidget);
     expect(find.text('SESSION SAVED'), findsOneWidget);
     expect(find.text('BENCH PRESS'), findsOneWidget);
     // The metric grid sits below the receipt, so it needs scrolling into view.

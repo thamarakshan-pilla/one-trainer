@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:repset/domain/muscle_map.dart';
-import 'package:repset/features/you/body_map_paths.dart';
+import 'package:trainerone/domain/muscle_map.dart';
+import 'package:trainerone/features/you/body_map_paths.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();

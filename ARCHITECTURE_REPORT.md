@@ -1,3 +1,5 @@
+> TrainerOne fork. The notes below describe the upstream RepSet design. This build is offline and does not use the RepSet name, logo, or cloud services.
+
 # RepSet gym training logger - architecture
 
 ## Product decision

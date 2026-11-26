@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:repset/data/demo_exercise_repository.dart';
-import 'package:repset/domain/exercise.dart';
-import 'package:repset/features/library/library_bloc.dart';
+import 'package:trainerone/data/demo_exercise_repository.dart';
+import 'package:trainerone/domain/exercise.dart';
+import 'package:trainerone/features/library/library_bloc.dart';
 
 void main() {
   test('filters catalog and toggles a favorite', () async {

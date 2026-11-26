@@ -1,15 +1,14 @@
 # Exercise media notice
 
-The exercise animation GIFs served by RepSet are copyrighted media from
-**Gym Visual** (Aliaksandr Makatserchyk). RepSet redistributes those GIFs with
-permission from Gym Visual for use with the RepSet exercise catalogue.
+The exercise animation GIFs served by upstream RepSet are copyrighted media
+from **Gym Visual** (Aliaksandr Makatserchyk). They are not open-source assets
+and they are not in this repository.
 
-They are **not open-source assets** and are not covered by the license that
-applies to RepSet's source code. The RepSet production media service is for
-official RepSet builds only. This notice grants no right to copy, extract,
-rehost, sublicense, or distribute the GIFs as a separate media pack. Forks
-must configure their own authorized exercise media source.
+TrainerOne does not fetch, mirror, or bundle those GIFs. The exercise library
+in this build is the built-in demo catalogue, and movement previews stay on a
+local placeholder.
 
-The exercise GIFs are delivered from RepSet's media service and are not stored
-in this Git repository. Keep the written authorization and its commercial terms
-private with the project records; do not commit correspondence or invoices.
+A later illustration set, if one is added, has to be media this project has
+rights to use. [Workout Guide](https://github.com/bryllim/workout-guide) by
+Bryl Lim is a starting point whose artwork is CC BY-SA 4.0 and keeps the
+Everkinetic attribution.

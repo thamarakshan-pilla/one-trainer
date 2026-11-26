@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:repset/domain/app_preferences.dart';
-import 'package:repset/features/onboarding/onboarding_gate.dart';
+import 'package:trainerone/domain/app_preferences.dart';
+import 'package:trainerone/features/onboarding/onboarding_gate.dart';
 
 const _app = Key('the-app');
 
@@ -17,7 +17,7 @@ void main() {
     await tester.pumpWidget(_harness(MemoryAppPreferencesRepository()));
     await tester.pumpAndSettle();
 
-    expect(find.text('This is RepSet.'), findsOneWidget);
+    expect(find.text('This is TrainerOne.'), findsOneWidget);
     expect(find.byKey(_app), findsNothing);
   });
 
@@ -28,7 +28,7 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.byKey(_app), findsOneWidget);
-    expect(find.text('This is RepSet.'), findsNothing);
+    expect(find.text('This is TrainerOne.'), findsNothing);
   });
 
   testWidgets('continuing needs a path, not a name', (tester) async {
@@ -38,14 +38,14 @@ void main() {
     // Tapping continue before choosing a path must not move the flow on.
     await tester.tap(find.byKey(const Key('onboarding-continue')));
     await tester.pumpAndSettle();
-    expect(find.text('This is RepSet.'), findsOneWidget);
+    expect(find.text('This is TrainerOne.'), findsOneWidget);
 
     await tester.tap(find.byKey(const Key('onboarding-path-lifter')));
     await tester.pumpAndSettle();
     await tester.tap(find.byKey(const Key('onboarding-continue')));
     await tester.pumpAndSettle();
 
-    expect(find.text('This is RepSet.'), findsNothing);
+    expect(find.text('This is TrainerOne.'), findsNothing);
   });
 
   testWidgets('the lifter path reaches the app and is remembered', (

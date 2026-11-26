@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:repset/data/memory_workout_repository.dart';
-import 'package:repset/domain/exercise.dart';
-import 'package:repset/domain/workout_session.dart';
-import 'package:repset/features/workout/workout_bloc.dart';
+import 'package:trainerone/data/memory_workout_repository.dart';
+import 'package:trainerone/domain/exercise.dart';
+import 'package:trainerone/domain/workout_session.dart';
+import 'package:trainerone/features/workout/workout_bloc.dart';
 
 void main() {
   test('logs and restores a completed set with optional RPE', () async {

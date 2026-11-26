@@ -1,3 +1,5 @@
+> TrainerOne fork. The notes below describe the upstream RepSet design. This build is offline and does not use the RepSet name, logo, or cloud services.
+
 # Feature comparison: legacy RepSet vs remaster
 
 Legend: **Built** means working code exists in the remaster. **Foundation** means the boundary or dependency exists but the feature is not wired into the app. **Planned** means documented only.

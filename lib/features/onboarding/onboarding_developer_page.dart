@@ -10,10 +10,8 @@ const _repositoryUrl = 'github.com/oscarcrescente/open-repset';
 
 /// The lines the terminal types out, in order.
 ///
-/// Written as a session someone could actually run: clone, install, launch.
-/// A fork gets the demo catalogue and no keys, which is the whole point of the
-/// community build, so the last line says so rather than leaving it to be
-/// discovered.
+/// The source is the public RepSet project. This build does not call its
+/// services: it runs the demo library and keeps workouts on the device.
 const _lines = [
   _TerminalLine.command('git clone https://$_repositoryUrl'),
   _TerminalLine.output('Cloning into open-repset…'),
@@ -21,10 +19,10 @@ const _lines = [
   _TerminalLine.output('Got dependencies.'),
   _TerminalLine.command('flutter run'),
   _TerminalLine.output('Launching lib/main.dart…'),
-  _TerminalLine.comment('# Runs on the built-in demo exercise library.'),
-  _TerminalLine.comment('# No keys, no telemetry, no account required.'),
-  _TerminalLine.comment('# Point it at your own catalogue and services'),
-  _TerminalLine.comment('# with --dart-define. See the README.'),
+  _TerminalLine.comment('# TrainerOne keeps workouts on this device.'),
+  _TerminalLine.comment('# Demo exercises only. No account, ads, or cloud.'),
+  _TerminalLine.comment('# Source is Apache-2.0. The RepSet name and'),
+  _TerminalLine.comment('# logo stay with the upstream project.'),
 ];
 
 enum _LineKind { command, output, comment }
@@ -127,8 +125,8 @@ class _OnboardingDeveloperPageState extends State<OnboardingDeveloperPage> {
           RepSetEntrance(
             delay: const Duration(milliseconds: 60),
             child: Text(
-              'The whole app is public. Read it, fork it, run it against your '
-              'own services — no keys of ours required.',
+              'TrainerOne is an offline logger derived from public source. '
+              'Workouts stay on this device.',
               style: TextStyle(
                 color: Theme.of(context).colorScheme.onSurfaceVariant,
                 fontSize: 14.5,

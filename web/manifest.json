@@ -1,6 +1,6 @@
 {
-    "name": "RepSet",
-    "short_name": "RepSet",
+    "name": "TrainerOne",
+    "short_name": "TrainerOne",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#141414",

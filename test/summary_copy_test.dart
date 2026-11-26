@@ -1,9 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:repset/domain/workout_session.dart';
-import 'package:repset/domain/workout_summary.dart';
-import 'package:repset/features/workout/summary/summary_copy.dart';
+import 'package:trainerone/domain/workout_session.dart';
+import 'package:trainerone/domain/workout_summary.dart';
+import 'package:trainerone/features/workout/summary/summary_copy.dart';
 
 WorkoutSummary _summary({
   List<WorkoutRecord> records = const [],

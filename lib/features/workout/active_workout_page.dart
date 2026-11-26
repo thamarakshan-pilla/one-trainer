@@ -3,8 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:keyboard_actions/keyboard_actions.dart';
 
-import '../../core/account/max_access.dart';
-import '../../core/ads/official_ads_service.dart';
 import '../../core/motion/repset_motion.dart';
 import '../../domain/exercise.dart';
 import '../../domain/workout_repository.dart';
@@ -19,10 +17,9 @@ import 'workout_bloc.dart';
 import 'workout_elapsed_time.dart';
 
 class ActiveWorkoutPage extends StatelessWidget {
-  const ActiveWorkoutPage({this.onBack, this.adsService, super.key});
+  const ActiveWorkoutPage({this.onBack, super.key});
 
   final VoidCallback? onBack;
-  final OfficialAdsService? adsService;
 
   @override
   Widget build(BuildContext context) => BlocConsumer<WorkoutBloc, WorkoutState>(
@@ -58,7 +55,6 @@ class ActiveWorkoutPage extends StatelessWidget {
                       delegate: _WorkoutHeaderDelegate(
                         session: session,
                         onBack: onBack,
-                        adsService: adsService,
                       ),
                     ),
                   ),
@@ -149,15 +145,10 @@ class ActiveWorkoutPage extends StatelessWidget {
 enum _FinishWorkoutChoice { finish, saveTemplate, discard }
 
 class _WorkoutHeaderDelegate extends SliverPersistentHeaderDelegate {
-  _WorkoutHeaderDelegate({
-    required this.session,
-    required this.onBack,
-    required this.adsService,
-  });
+  _WorkoutHeaderDelegate({required this.session, required this.onBack});
 
   final WorkoutSession session;
   final VoidCallback? onBack;
-  final OfficialAdsService? adsService;
 
   @override
   double get minExtent => 64;
@@ -178,29 +169,24 @@ class _WorkoutHeaderDelegate extends SliverPersistentHeaderDelegate {
     return _WorkoutHeader(
       session: session,
       onBack: onBack,
-      adsService: adsService,
       collapseProgress: collapseProgress,
     );
   }
 
   @override
   bool shouldRebuild(covariant _WorkoutHeaderDelegate oldDelegate) =>
-      oldDelegate.session != session ||
-      oldDelegate.onBack != onBack ||
-      oldDelegate.adsService != adsService;
+      oldDelegate.session != session || oldDelegate.onBack != onBack;
 }
 
 class _WorkoutHeader extends StatelessWidget {
   const _WorkoutHeader({
     required this.session,
     required this.onBack,
-    required this.adsService,
     required this.collapseProgress,
   });
 
   final WorkoutSession session;
   final VoidCallback? onBack;
-  final OfficialAdsService? adsService;
   final double collapseProgress;
 
   @override
@@ -443,27 +429,6 @@ class _WorkoutHeader extends StatelessWidget {
     context.read<WorkoutBloc>().add(const WorkoutFinished());
 
     await showWorkoutSummarySheet(context, load: () => summary);
-    if (!context.mounted || adsService == null) return;
-
-    try {
-      final result = await summary;
-      if (!context.mounted) return;
-      // Persistence is asynchronous. If the bloc has not published the saved
-      // state yet, skip the ad instead of risking overlap with an active
-      // workout or delaying navigation to wait for monetization.
-      if (context.read<WorkoutBloc>().state.hasActiveSession) return;
-      final max = context.read<MaxAccessCubit>().state;
-      adsService!.maybeShowCompletedWorkoutInterstitial(
-        // The summary is calculated before this session is saved.
-        completedWorkoutCount: result.completedSessionCount + 1,
-        hasMaxAccess:
-            !adsService!.isTestMode &&
-            (!max.isAvailable || !max.hasResolved || max.isActive),
-      );
-    } catch (error) {
-      // A summary failure never turns into an ad or delays the saved workout.
-      debugPrint('Post-workout ad skipped: $error');
-    }
   }
 }
 

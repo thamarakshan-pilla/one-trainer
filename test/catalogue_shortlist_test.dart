@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:repset/domain/catalogue_shortlist.dart';
-import 'package:repset/domain/exercise.dart';
-import 'package:repset/domain/session_plan.dart';
+import 'package:trainerone/domain/catalogue_shortlist.dart';
+import 'package:trainerone/domain/exercise.dart';
+import 'package:trainerone/domain/session_plan.dart';
 
 Exercise _exercise({
   required String id,

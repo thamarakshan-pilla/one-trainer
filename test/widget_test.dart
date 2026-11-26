@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:repset/app/repset_app.dart';
-import 'package:repset/domain/app_preferences.dart';
+import 'package:trainerone/app/trainerone_app.dart';
+import 'package:trainerone/domain/app_preferences.dart';
 
 void main() {
   testWidgets('shows the portfolio home screen', (tester) async {
     await tester.pumpWidget(
-      RepSetApp(appPreferences: MemoryAppPreferencesRepository.onboarded()),
+      TrainerOneApp(appPreferences: MemoryAppPreferencesRepository.onboarded()),
     );
     await tester.pump();
 
@@ -19,7 +19,7 @@ void main() {
     tester,
   ) async {
     await tester.pumpWidget(
-      RepSetApp(appPreferences: MemoryAppPreferencesRepository.onboarded()),
+      TrainerOneApp(appPreferences: MemoryAppPreferencesRepository.onboarded()),
     );
     await tester.pump();
 
@@ -78,7 +78,7 @@ void main() {
     addTearDown(tester.view.resetDevicePixelRatio);
 
     await tester.pumpWidget(
-      RepSetApp(appPreferences: MemoryAppPreferencesRepository.onboarded()),
+      TrainerOneApp(appPreferences: MemoryAppPreferencesRepository.onboarded()),
     );
     await tester.pump(const Duration(milliseconds: 100));
     await tester.tap(find.text('Begin training'));
@@ -104,7 +104,7 @@ void main() {
 
   testWidgets('saves a template while finishing a workout', (tester) async {
     await tester.pumpWidget(
-      RepSetApp(appPreferences: MemoryAppPreferencesRepository.onboarded()),
+      TrainerOneApp(appPreferences: MemoryAppPreferencesRepository.onboarded()),
     );
     await tester.pumpAndSettle();
 
@@ -163,7 +163,7 @@ void main() {
     tester,
   ) async {
     await tester.pumpWidget(
-      RepSetApp(appPreferences: MemoryAppPreferencesRepository.onboarded()),
+      TrainerOneApp(appPreferences: MemoryAppPreferencesRepository.onboarded()),
     );
     await tester.pumpAndSettle();
 
@@ -187,7 +187,7 @@ void main() {
 
   testWidgets('shows a finished workout in history', (tester) async {
     await tester.pumpWidget(
-      RepSetApp(appPreferences: MemoryAppPreferencesRepository.onboarded()),
+      TrainerOneApp(appPreferences: MemoryAppPreferencesRepository.onboarded()),
     );
     await tester.pumpAndSettle();
 
@@ -211,7 +211,7 @@ void main() {
 
   testWidgets('cancels an active workout without saving it', (tester) async {
     await tester.pumpWidget(
-      RepSetApp(appPreferences: MemoryAppPreferencesRepository.onboarded()),
+      TrainerOneApp(appPreferences: MemoryAppPreferencesRepository.onboarded()),
     );
     await tester.pumpAndSettle();
 
@@ -238,7 +238,7 @@ void main() {
     tester,
   ) async {
     await tester.pumpWidget(
-      RepSetApp(appPreferences: MemoryAppPreferencesRepository.onboarded()),
+      TrainerOneApp(appPreferences: MemoryAppPreferencesRepository.onboarded()),
     );
     await tester.pumpAndSettle();
 
@@ -280,7 +280,7 @@ void main() {
     addTearDown(tester.view.resetDevicePixelRatio);
 
     await tester.pumpWidget(
-      RepSetApp(appPreferences: MemoryAppPreferencesRepository.onboarded()),
+      TrainerOneApp(appPreferences: MemoryAppPreferencesRepository.onboarded()),
     );
     await tester.pump(const Duration(milliseconds: 100));
 
@@ -440,7 +440,7 @@ void main() {
     tester,
   ) async {
     await tester.pumpWidget(
-      RepSetApp(appPreferences: MemoryAppPreferencesRepository.onboarded()),
+      TrainerOneApp(appPreferences: MemoryAppPreferencesRepository.onboarded()),
     );
     await tester.pumpAndSettle();
     await tester.tap(find.text('Begin training'));

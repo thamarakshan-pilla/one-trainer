@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../domain/workout_summary.dart';
+import '../../home/home_tiles.dart';
 import 'summary_copy.dart';
 import 'summary_motion.dart';
 
@@ -247,16 +248,7 @@ class _HeaderState extends State<_Header> {
       children: [
         Row(
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Image.asset(
-                'assets/icon/brand_mark.png',
-                width: 34,
-                height: 34,
-                fit: BoxFit.cover,
-                filterQuality: FilterQuality.medium,
-              ),
-            ),
+            const TrainerOneMark(size: 34),
             const SizedBox(width: 11),
             Expanded(
               child: Text(
@@ -337,7 +329,7 @@ class _Receipt extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const Text(
-              'REPSET / SESSION RECEIPT',
+              'TRAINERONE / SESSION RECEIPT',
               style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: .4),
             ),
             const _ReceiptDivider(),

@@ -13,20 +13,13 @@ const onboardingAccent = Color(0xffd7ff4f);
 ///
 /// It asks two things and then gets out of the way. Nothing here gates the
 /// app: whichever path someone picks, they land in the same logger with the
-/// same features. The answer only changes what RepSet says to them on the way
-/// in — a developer wants the repository, a lifter wants to start training.
+/// same features. The answer only changes what TrainerOne says to them on the
+/// way in — a developer wants the repository, a lifter wants to start training.
 class OnboardingFlow extends StatefulWidget {
-  const OnboardingFlow({
-    super.key,
-    required this.onFinished,
-    this.onOpenPaywall,
-  });
+  const OnboardingFlow({super.key, required this.onFinished});
 
   /// Called with the completed record once the last screen is dismissed.
   final ValueChanged<OnboardingRecord> onFinished;
-
-  /// Offered on the lifter path. Absent when this build cannot sell Max.
-  final VoidCallback? onOpenPaywall;
 
   @override
   State<OnboardingFlow> createState() => _OnboardingFlowState();
@@ -74,11 +67,7 @@ class _OnboardingFlowState extends State<OnboardingFlow> {
           if (_path == TrainerPath.developer)
             OnboardingDeveloperPage(name: _name, onContinue: _advance)
           else
-            OnboardingLifterPage(
-              name: _name,
-              onContinue: _advance,
-              onOpenPaywall: widget.onOpenPaywall,
-            ),
+            OnboardingLifterPage(name: _name, onContinue: _advance),
           OnboardingReadyPage(onFinish: _finish),
         ],
       ),

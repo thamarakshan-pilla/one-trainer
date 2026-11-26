@@ -1,3 +1,5 @@
+> TrainerOne fork. The notes below describe the upstream RepSet design. This build is offline and does not use the RepSet name, logo, or cloud services.
+
 # RepSet rebuild plan
 
 Each phase ends with a usable feature, database migrations, BLoC tests, widget tests, and a manual mobile smoke test. A phase is complete only when it works offline and survives an app restart.

@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.repset.repSetApp"
+    namespace = "com.trainerone.app"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -17,19 +17,13 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.repset.repSetApp"
+        applicationId = "com.trainerone.app"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
-        // Public client identifier. Protected official builds override this
-        // Gradle property; community builds keep Google's sample identifier
-        // and never request ads because the Dart feature flag defaults off.
-        manifestPlaceholders["repsetAdMobAppId"] =
-            providers.gradleProperty("REPSET_ADMOB_ANDROID_APP_ID")
-                .getOrElse("ca-app-pub-3940256099942544~3347511713")
     }
 
     buildTypes {
