@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   apk:
@@ -30,12 +30,34 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
+      - name: Read pubspec version
+        id: version
+        run: |
+          version="$(sed -n 's/^version:[[:space:]]*//p' pubspec.yaml | head -n 1 | tr -d '[:space:]')"
+          test -n "$version"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "tag=v$version" >> "$GITHUB_OUTPUT"
+
       - name: Build release APK
         run: flutter build apk --release
+
+      - name: Name the APK for this version
+        run: cp build/app/outputs/flutter-apk/app-release.apk "trainerone-${{ steps.version.outputs.version }}.apk"
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: app-release-apk
-          path: build/app/outputs/flutter-apk/app-release.apk
+          name: app-release-apk-${{ steps.version.outputs.version }}
+          path: trainerone-${{ steps.version.outputs.version }}.apk
           if-no-files-found: error
+
+      - name: Publish GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${{ steps.version.outputs.tag }}" \
+            "trainerone-${{ steps.version.outputs.version }}.apk" \
+            --repo "${{ github.repository }}" \
+            --target main \
+            --title "${{ steps.version.outputs.tag }}" \
+            --notes "Debug-signed TrainerOne APK ${{ steps.version.outputs.version }} from pubspec.yaml. Sideload for testing."
