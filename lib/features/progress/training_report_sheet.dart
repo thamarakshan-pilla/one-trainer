@@ -29,10 +29,10 @@ class _TrainingReportSheetState extends State<TrainingReportSheet> {
       if (!mounted) return;
       await SharePlus.instance.share(
         ShareParams(
-          title: 'RepSet training report',
-          subject: 'RepSet training report',
+          title: 'TrainerOne training report',
+          subject: 'TrainerOne training report',
           text:
-              'A read-only training report from RepSet. It includes Markdown and structured JSON.',
+              'A read-only training report from TrainerOne. It includes Markdown and structured JSON.',
           files: [
             XFile.fromData(
               Uint8List.fromList(utf8.encode(report.markdown)),
@@ -44,8 +44,8 @@ class _TrainingReportSheetState extends State<TrainingReportSheet> {
             ),
           ],
           fileNameOverrides: const [
-            'repset-training-report.md',
-            'repset-training-data.json',
+            'trainerone-training-report.md',
+            'trainerone-training-data.json',
           ],
         ),
       );

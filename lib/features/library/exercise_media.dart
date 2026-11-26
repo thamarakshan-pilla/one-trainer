@@ -1,8 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../domain/exercise.dart';
 
+/// Movement preview. Remote media is not loaded; this build stays on-device.
 class ExerciseMedia extends StatelessWidget {
   const ExerciseMedia({required this.exercise, this.size, super.key});
 
@@ -21,7 +21,6 @@ class ExerciseMedia extends StatelessWidget {
         ),
       ),
     );
-    final mediaUrl = exercise.mediaUrl;
     return Semantics(
       label: '${exercise.name} movement preview',
       image: true,
@@ -30,19 +29,7 @@ class ExerciseMedia extends StatelessWidget {
         height: size,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(12),
-          child: mediaUrl == null || mediaUrl.isEmpty
-              ? placeholder
-              : CachedNetworkImage(
-                  imageUrl: mediaUrl,
-                  fit: BoxFit.cover,
-                  placeholder: (_, _) => placeholder,
-                  errorWidget: (_, url, error) {
-                    debugPrint(
-                      'Exercise GIF failed to load for ${exercise.id}: $url ($error)',
-                    );
-                    return placeholder;
-                  },
-                ),
+          child: placeholder,
         ),
       ),
     );

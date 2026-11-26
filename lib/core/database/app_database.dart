@@ -5,7 +5,7 @@ class AppDatabase {
   AppDatabase._();
 
   static Future<Database> open({String? path}) async => openDatabase(
-    path ?? join(await getDatabasesPath(), 'repset.db'),
+    path ?? join(await getDatabasesPath(), 'trainerone.db'),
     version: 9,
     onConfigure: (database) => database.execute('PRAGMA foreign_keys = ON'),
     onCreate: (database, _) async {

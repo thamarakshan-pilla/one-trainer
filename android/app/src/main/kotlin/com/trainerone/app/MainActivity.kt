@@ -1,4 +1,4 @@
-package com.repset.repSetApp
+package com.trainerone.app
 
 import io.flutter.embedding.android.FlutterActivity
 

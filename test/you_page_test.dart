@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:repset/data/demo_exercise_repository.dart';
-import 'package:repset/data/memory_body_weight_repository.dart';
-import 'package:repset/data/memory_muscle_coverage_repository.dart';
-import 'package:repset/data/memory_training_analytics_repository.dart';
-import 'package:repset/data/memory_workout_repository.dart';
-import 'package:repset/domain/body_weight.dart';
-import 'package:repset/domain/relative_strength_service.dart';
-import 'package:repset/features/progress/body_weight_bloc.dart';
-import 'package:repset/features/progress/progress_bloc.dart';
-import 'package:repset/features/you/muscle_coverage_bloc.dart';
-import 'package:repset/features/you/you_page.dart';
+import 'package:trainerone/data/demo_exercise_repository.dart';
+import 'package:trainerone/data/memory_body_weight_repository.dart';
+import 'package:trainerone/data/memory_muscle_coverage_repository.dart';
+import 'package:trainerone/data/memory_training_analytics_repository.dart';
+import 'package:trainerone/data/memory_workout_repository.dart';
+import 'package:trainerone/domain/body_weight.dart';
+import 'package:trainerone/domain/relative_strength_service.dart';
+import 'package:trainerone/features/progress/body_weight_bloc.dart';
+import 'package:trainerone/features/progress/progress_bloc.dart';
+import 'package:trainerone/features/you/muscle_coverage_bloc.dart';
+import 'package:trainerone/features/you/you_page.dart';
 
 Future<MemoryBodyWeightRepository> _pumpYou(
   WidgetTester tester, {

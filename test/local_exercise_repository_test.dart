@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:repset/core/database/app_database.dart';
-import 'package:repset/data/local_exercise_repository.dart';
-import 'package:repset/data/sqlite_exercise_store.dart';
-import 'package:repset/domain/exercise.dart';
+import 'package:trainerone/core/database/app_database.dart';
+import 'package:trainerone/data/local_exercise_repository.dart';
+import 'package:trainerone/data/sqlite_exercise_store.dart';
+import 'package:trainerone/domain/exercise.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 void main() {

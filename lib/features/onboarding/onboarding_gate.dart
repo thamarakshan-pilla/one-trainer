@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../core/account/account_service.dart';
 import '../../domain/app_preferences.dart';
-import '../paywall/max_paywall_page.dart';
 import 'onboarding_flow.dart';
 
 /// Shows the introduction once, then the app.
@@ -17,12 +15,10 @@ class OnboardingGate extends StatefulWidget {
     super.key,
     required this.preferences,
     required this.child,
-    this.accountService,
   });
 
   final AppPreferencesRepository preferences;
   final Widget child;
-  final AccountService? accountService;
 
   @override
   State<OnboardingGate> createState() => _OnboardingGateState();
@@ -45,24 +41,6 @@ class _OnboardingGateState extends State<OnboardingGate> {
     await widget.preferences.saveOnboarding(record);
   }
 
-  Future<void> _openPaywall() async {
-    final purchases = widget.accountService?.purchases;
-    if (purchases == null) return;
-    if (!await requireSignInForMax(context, widget.accountService) ||
-        !mounted) {
-      return;
-    }
-    await Navigator.of(context).push<bool>(
-      MaterialPageRoute(
-        fullscreenDialog: true,
-        builder: (_) => MaxPaywallPage(
-          purchases: purchases,
-          account: widget.accountService,
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) => FutureBuilder<OnboardingRecord>(
     future: _record,
@@ -74,12 +52,7 @@ class _OnboardingGateState extends State<OnboardingGate> {
       // smaller harm than skipping it for someone who never saw it.
       final seen = snapshot.data?.isComplete ?? false;
       if (seen || _dismissed) return widget.child;
-      return OnboardingFlow(
-        onFinished: _finish,
-        onOpenPaywall: widget.accountService?.purchases?.isConfigured ?? false
-            ? _openPaywall
-            : null,
-      );
+      return OnboardingFlow(onFinished: _finish);
     },
   );
 }

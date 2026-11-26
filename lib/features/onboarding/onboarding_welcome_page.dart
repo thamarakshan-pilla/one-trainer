@@ -5,7 +5,7 @@ import '../../domain/app_preferences.dart';
 import '../home/home_tiles.dart';
 import 'onboarding_flow.dart';
 
-/// The opening screen: who RepSet is, and who is holding the phone.
+/// The opening screen: who TrainerOne is, and who is holding the phone.
 ///
 /// The name is optional. Asking for it warms the next screens, but refusing to
 /// continue without one would be a toll gate on a free logger.
@@ -48,10 +48,10 @@ class _OnboardingWelcomePageState extends State<OnboardingWelcomePage> {
           RepSetEntrance(
             child: Row(
               children: [
-                const RepSetBrandMark(size: 40),
+                const TrainerOneMark(size: 40),
                 const SizedBox(width: 13),
                 Text(
-                  'REPSET',
+                  'TRAINERONE',
                   style: Theme.of(context).textTheme.labelLarge?.copyWith(
                     fontWeight: FontWeight.w900,
                     letterSpacing: 1.6,
@@ -63,12 +63,18 @@ class _OnboardingWelcomePageState extends State<OnboardingWelcomePage> {
           const SizedBox(height: 30),
           RepSetEntrance(
             delay: const Duration(milliseconds: 60),
-            child: Text(
-              'This is RepSet.',
-              style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                fontWeight: FontWeight.w900,
-                height: 1.02,
-                letterSpacing: -1.6,
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'This is TrainerOne.',
+                maxLines: 1,
+                softWrap: false,
+                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                  fontWeight: FontWeight.w900,
+                  height: 1.02,
+                  letterSpacing: -1.6,
+                ),
               ),
             ),
           ),
@@ -85,7 +91,7 @@ class _OnboardingWelcomePageState extends State<OnboardingWelcomePage> {
               ),
             ),
           ),
-          const SizedBox(height: 38),
+          const SizedBox(height: 28),
           RepSetEntrance(
             delay: const Duration(milliseconds: 150),
             child: _FieldLabel('Who are you?'),

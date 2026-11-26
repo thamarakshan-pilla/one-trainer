@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:repset/domain/exercise.dart';
-import 'package:repset/domain/session_plan.dart';
-import 'package:repset/domain/workout_planner.dart';
-import 'package:repset/features/home/session_planner_bloc.dart';
+import 'package:trainerone/domain/exercise.dart';
+import 'package:trainerone/domain/session_plan.dart';
+import 'package:trainerone/domain/workout_planner.dart';
+import 'package:trainerone/features/home/session_planner_bloc.dart';
 
 class _FakePlanner implements WorkoutPlanner {
   _FakePlanner({this.query, this.plan, this.error});

@@ -1,3 +1,5 @@
+> TrainerOne fork. The notes below describe the upstream RepSet design. This build is offline and does not use the RepSet name, logo, or cloud services.
+
 # RepSet design system
 
 This file is the durable design contract for every new RepSet feature. New UI

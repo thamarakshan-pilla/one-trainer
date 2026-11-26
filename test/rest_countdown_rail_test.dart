@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:repset/features/workout/rest_countdown_rail.dart';
+import 'package:trainerone/features/workout/rest_countdown_rail.dart';
 
 void main() {
   testWidgets('counts down and fires its alarm callback once', (tester) async {

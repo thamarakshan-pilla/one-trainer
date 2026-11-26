@@ -166,7 +166,7 @@ class TrainingReportBuilder {
     required int weeks,
   }) {
     final lines = <String>[
-      '# RepSet training report',
+      '# TrainerOne training report',
       '',
       'Generated: $generatedAt',
       'Window: last $weeks weeks',

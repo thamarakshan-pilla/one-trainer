@@ -4,22 +4,31 @@ import '../../core/motion/repset_motion.dart';
 
 const _accent = Color(0xffd7ff4f);
 
-/// The brand mark, rendered from the launcher icon source so the in-app
-/// identity and the home-screen icon never drift apart.
-class RepSetBrandMark extends StatelessWidget {
-  const RepSetBrandMark({super.key, this.size = 34});
+/// A simple wordmark tile. It is drawn in code so this fork does not ship
+/// another product's logo.
+class TrainerOneMark extends StatelessWidget {
+  const TrainerOneMark({super.key, this.size = 34});
 
   final double size;
 
   @override
-  Widget build(BuildContext context) => ClipRRect(
-    borderRadius: BorderRadius.circular(size * .26),
-    child: Image.asset(
-      'assets/icon/brand_mark.png',
-      width: size,
-      height: size,
-      fit: BoxFit.cover,
-      filterQuality: FilterQuality.medium,
+  Widget build(BuildContext context) => Container(
+    width: size,
+    height: size,
+    alignment: Alignment.center,
+    decoration: BoxDecoration(
+      color: const Color(0xff141414),
+      borderRadius: BorderRadius.circular(size * .26),
+      border: Border.all(color: const Color(0xffd7ff4f), width: size * .06),
+    ),
+    child: Text(
+      'T',
+      style: TextStyle(
+        color: const Color(0xffd7ff4f),
+        fontSize: size * .62,
+        fontWeight: FontWeight.w900,
+        height: 1,
+      ),
     ),
   );
 }

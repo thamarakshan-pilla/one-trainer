@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:repset/features/home/train_prompt_field.dart';
+import 'package:trainerone/features/home/train_prompt_field.dart';
 
 Widget _harness({String? disabledLabel, ValueChanged<String>? onSubmitted}) =>
     MaterialApp(

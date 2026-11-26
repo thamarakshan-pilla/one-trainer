@@ -1,30 +1,20 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import '../../core/motion/repset_motion.dart';
 import 'onboarding_flow.dart';
 
-const _repositoryUrl = 'github.com/oscarcrescente/open-repset';
-
 /// The lines the terminal types out, in order.
 ///
-/// Written as a session someone could actually run: clone, install, launch.
-/// A fork gets the demo catalogue and no keys, which is the whole point of the
-/// community build, so the last line says so rather than leaving it to be
-/// discovered.
+/// Local commands only. Nothing here names a host or copies an address.
 const _lines = [
-  _TerminalLine.command('git clone https://$_repositoryUrl'),
-  _TerminalLine.output('Cloning into open-repset…'),
-  _TerminalLine.command('cd open-repset && flutter pub get'),
+  _TerminalLine.command('flutter pub get'),
   _TerminalLine.output('Got dependencies.'),
   _TerminalLine.command('flutter run'),
   _TerminalLine.output('Launching lib/main.dart…'),
-  _TerminalLine.comment('# Runs on the built-in demo exercise library.'),
-  _TerminalLine.comment('# No keys, no telemetry, no account required.'),
-  _TerminalLine.comment('# Point it at your own catalogue and services'),
-  _TerminalLine.comment('# with --dart-define. See the README.'),
+  _TerminalLine.comment('# Workouts stay in a local database.'),
+  _TerminalLine.comment('# Demo exercises only. No account, ads, or cloud.'),
 ];
 
 enum _LineKind { command, output, comment }
@@ -57,7 +47,6 @@ class OnboardingDeveloperPage extends StatefulWidget {
 class _OnboardingDeveloperPageState extends State<OnboardingDeveloperPage> {
   Timer? _timer;
   int _visible = 0;
-  bool _copied = false;
 
   @override
   void initState() {
@@ -85,17 +74,6 @@ class _OnboardingDeveloperPageState extends State<OnboardingDeveloperPage> {
     if (_visible >= _lines.length) return;
     _timer?.cancel();
     setState(() => _visible = _lines.length);
-  }
-
-  Future<void> _copyClone() async {
-    await Clipboard.setData(
-      const ClipboardData(text: 'git clone https://$_repositoryUrl'),
-    );
-    if (!mounted) return;
-    setState(() => _copied = true);
-    Future.delayed(const Duration(seconds: 2), () {
-      if (mounted) setState(() => _copied = false);
-    });
   }
 
   @override
@@ -127,8 +105,7 @@ class _OnboardingDeveloperPageState extends State<OnboardingDeveloperPage> {
           RepSetEntrance(
             delay: const Duration(milliseconds: 60),
             child: Text(
-              'The whole app is public. Read it, fork it, run it against your '
-              'own services — no keys of ours required.',
+              'TrainerOne runs on this device. The training engine stays local.',
               style: TextStyle(
                 color: Theme.of(context).colorScheme.onSurfaceVariant,
                 fontSize: 14.5,
@@ -145,11 +122,6 @@ class _OnboardingDeveloperPageState extends State<OnboardingDeveloperPage> {
               typing: _visible < _lines.length,
               onTap: _revealAll,
             ),
-          ),
-          const SizedBox(height: 14),
-          RepSetEntrance(
-            delay: const Duration(milliseconds: 150),
-            child: _CopyRow(copied: _copied, onCopy: _copyClone),
           ),
         ],
       ),
@@ -232,7 +204,7 @@ class _TerminalBar extends StatelessWidget {
         ],
         const SizedBox(width: 6),
         const Text(
-          'open-repset — zsh',
+          'trainerone — zsh',
           style: TextStyle(
             color: _Terminal._dim,
             fontSize: 11,
@@ -325,47 +297,3 @@ class _CaretState extends State<_Caret>
   );
 }
 
-class _CopyRow extends StatelessWidget {
-  const _CopyRow({required this.copied, required this.onCopy});
-
-  final bool copied;
-  final VoidCallback onCopy;
-
-  @override
-  Widget build(BuildContext context) => RepSetPress(
-    scale: .98,
-    child: GestureDetector(
-      key: const Key('onboarding-copy-clone'),
-      onTap: onCopy,
-      child: Container(
-        padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
-        decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.surfaceContainerHigh,
-          borderRadius: BorderRadius.circular(14),
-        ),
-        child: Row(
-          children: [
-            Icon(
-              copied ? Icons.check_rounded : Icons.copy_rounded,
-              size: 16,
-              color: onboardingAccent,
-            ),
-            const SizedBox(width: 10),
-            Expanded(
-              child: Text(
-                copied ? 'Copied to clipboard' : _repositoryUrl,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
-                  fontFamily: 'monospace',
-                  fontSize: 12,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    ),
-  );
-}
