@@ -91,7 +91,9 @@ void main() {
       await tester.pump(const Duration(milliseconds: 300));
     }
 
-    expect(find.textContaining('git clone'), findsOneWidget);
+    expect(find.textContaining('flutter pub get'), findsOneWidget);
+    expect(find.textContaining('http'), findsNothing);
+    expect(find.textContaining('github.com'), findsNothing);
 
     await tester.tap(find.byKey(const Key('onboarding-developer-continue')));
     await tester.pump(const Duration(milliseconds: 500));
